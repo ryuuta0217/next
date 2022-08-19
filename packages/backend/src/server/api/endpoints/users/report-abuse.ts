@@ -92,7 +92,7 @@ export default define(meta, paramDef, async (ps, me) => {
 
 		const meta = await fetchMeta();
 		if (meta.email) {
-			sendEmail(meta.email, 'New abuse report',
+			sendEmail(meta.email, '[Next] 新しい通報があります',
 				sanitizeHtml(ps.comment),
 				sanitizeHtml(ps.comment));
 		}

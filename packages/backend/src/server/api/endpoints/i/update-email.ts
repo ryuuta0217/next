@@ -84,9 +84,9 @@ export default define(meta, paramDef, async (ps, user) => {
 
 		const link = `${config.url}/verify-email/${code}`;
 
-		sendEmail(ps.email, 'Email verification',
-			`To verify email, please click this link:<br><a href="${link}">${link}</a>`,
-			`To verify email, please click this link: ${link}`);
+		sendEmail(ps.email, `[Next] メールアドレス認証 (@${user.username})`,
+			`<a href="${link}">ここ</a> をクリックしてメールアドレスの認証を完了してください。`,
+			`リンクをクリックして、メールアドレスの認証を完了してください。\n${link}`);
 	}
 
 	return iObj;

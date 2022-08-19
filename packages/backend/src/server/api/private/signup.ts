@@ -86,9 +86,9 @@ export default async (ctx: Koa.Context) => {
 
 		const link = `${config.url}/signup-complete/${code}`;
 
-		sendEmail(emailAddress, 'Signup',
-			`To complete signup, please click this link:<br><a href="${link}">${link}</a>`,
-			`To complete signup, please click this link: ${link}`);
+		sendEmail(emailAddress, `[Next] @${username} の登録を完了してください`,
+			`<a href="${link}">ここをクリックして @${username} のアカウント登録を完了してください</a>`,
+			`登録を完了するには、リンクをクリックしてメールアドレスの認証を完了させてください。\n${link}`);
 
 		ctx.status = 204;
 	} else {

@@ -5,10 +5,10 @@ import config from '@/config/index.js';
 
 export const logger = new Logger('email');
 
-export async function sendEmail(to: string, subject: string, html: string, text: string) {
+export async function sendEmail(to: string, subject: string, html: string, text: string): Promise<void> {
 	const meta = await fetchMeta(true);
 
-	const iconUrl = `${config.url}/static-assets/mi-white.png`;
+	//const iconUrl = `${config.url}/static-assets/mi-white.png`;
 	const emailSettingUrl = `${config.url}/settings/email`;
 
 	const enableAuth = meta.smtpUser != null && meta.smtpUser !== '';
@@ -96,20 +96,10 @@ export async function sendEmail(to: string, subject: string, html: string, text:
 	</head>
 	<body>
 		<main>
-			<header>
-				<img src="${ meta.logoImageUrl || meta.iconUrl || iconUrl }"/>
-			</header>
 			<article>
-				<h1>${ subject }</h1>
 				<div>${ html }</div>
 			</article>
-			<footer>
-				<a href="${ emailSettingUrl }">${ 'Email setting' }</a>
-			</footer>
 		</main>
-		<nav>
-			<a href="${ config.url }">${ config.host }</a>
-		</nav>
 	</body>
 </html>`,
 		});
