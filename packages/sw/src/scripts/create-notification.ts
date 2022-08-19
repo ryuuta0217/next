@@ -274,6 +274,6 @@ export async function createEmptyNotification(): Promise<void> {
 			} finally {
 				res();
 			}
-		}, 1000);
+		}, 1000);*/
 	});
 }
