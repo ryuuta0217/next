@@ -498,7 +498,7 @@ function more(ev: MouseEvent) {
 						&:before {
 							content: "";
 							display: block;
-							height: 100%;
+							height: 90%;
 							aspect-ratio: 1;
 							margin: auto;
 							position: absolute;
