@@ -159,9 +159,9 @@ export class SignupApiService {
 
 			const link = `${this.config.url}/signup-complete/${code}`;
 
-			this.emailService.sendEmail(emailAddress!, 'Signup',
-				`To complete signup, please click this link:<br><a href="${link}">${link}</a>`,
-				`To complete signup, please click this link: ${link}`);
+			this.emailService.sendEmail(emailAddress!, `[Next] @${username} の登録を完了しましょう！`,
+				`Nextをお選びいただきありがとうございます。<br>アカウントの登録を完了するには、<a href="${link}">ここをクリックしてください</a>`,
+				`Nextをお選びいただきありがとうございます。\nアカウントの登録を完了するには、以下のリンクをクリックしてください。\n${link}`);
 
 			reply.code(204);
 			return;

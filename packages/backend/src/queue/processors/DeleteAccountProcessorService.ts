@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { MoreThan } from 'typeorm';
 import { DI } from '@/di-symbols.js';
-import type { DriveFilesRepository, NotesRepository, UserProfilesRepository, UsersRepository } from '@/models/index.js';
+import type { DriveFilesRepository, NotesRepository, User, UserProfilesRepository, UsersRepository } from '@/models/index.js';
 import type { Config } from '@/config.js';
 import type Logger from '@/logger.js';
 import { DriveService } from '@/core/DriveService.js';
@@ -44,7 +44,7 @@ export class DeleteAccountProcessorService {
 	public async process(job: Bull.Job<DbUserDeleteJobData>): Promise<string | void> {
 		this.logger.info(`Deleting account of ${job.data.user.id} ...`);
 
-		const user = await this.usersRepository.findOneBy({ id: job.data.user.id });
+		const user: User = await this.usersRepository.findOneBy({ id: job.data.user.id });
 		if (user == null) {
 			return;
 		}
@@ -108,9 +108,9 @@ export class DeleteAccountProcessorService {
 		{ // Send email notification
 			const profile = await this.userProfilesRepository.findOneByOrFail({ userId: user.id });
 			if (profile.email && profile.emailVerified) {
-				this.emailService.sendEmail(profile.email, 'Account deleted',
-					'Your account has been deleted.',
-					'Your account has been deleted.');
+				this.emailService.sendEmail(profile.email, `[Next] アカウント @${user.username} を削除しました`,
+					'アカウントはNext上で完全に消去されました。<br>またお会いできることを楽しみにしています！',
+					'あなたのアカウントはNext上で完全に消去されました。\nまたお会いできることを楽しみにしています！');
 			}
 		}
 

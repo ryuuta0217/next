@@ -30,8 +30,8 @@ export class EmailService {
 	public async sendEmail(to: string, subject: string, html: string, text: string) {
 		const meta = await this.metaService.fetch(true);
 	
-		const iconUrl = `${this.config.url}/static-assets/mi-white.png`;
-		const emailSettingUrl = `${this.config.url}/settings/email`;
+		//const iconUrl = `${this.config.url}/static-assets/mi-white.png`;
+		//const emailSettingUrl = `${this.config.url}/settings/email`;
 	
 		const enableAuth = meta.smtpUser != null && meta.smtpUser !== '';
 	
@@ -118,20 +118,10 @@ export class EmailService {
 	</head>
 	<body>
 		<main>
-			<header>
-				<img src="${ meta.logoImageUrl ?? meta.iconUrl ?? iconUrl }"/>
-			</header>
 			<article>
-				<h1>${ subject }</h1>
 				<div>${ html }</div>
 			</article>
-			<footer>
-				<a href="${ emailSettingUrl }">${ 'Email setting' }</a>
-			</footer>
 		</main>
-		<nav>
-			<a href="${ this.config.url }">${ this.config.host }</a>
-		</nav>
 	</body>
 </html>`,
 			});

@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import ms from 'ms';
 import bcrypt from 'bcryptjs';
 import { Endpoint } from '@/server/api/endpoint-base.js';
-import type { UsersRepository, UserProfilesRepository } from '@/models/index.js';
+import type { UsersRepository, UserProfilesRepository, User } from '@/models/index.js';
 import { UserEntityService } from '@/core/entities/UserEntityService.js';
 import { EmailService } from '@/core/EmailService.js';
 import type { Config } from '@/config.js';
@@ -62,7 +62,7 @@ export default class extends Endpoint<typeof meta, typeof paramDef> {
 		private emailService: EmailService,
 		private globalEventService: GlobalEventService,
 	) {
-		super(meta, paramDef, async (ps, me) => {
+		super(meta, paramDef, async (ps, me: User) => {
 			const profile = await this.userProfilesRepository.findOneByOrFail({ userId: me.id });
 
 			// Compare password
@@ -102,9 +102,9 @@ export default class extends Endpoint<typeof meta, typeof paramDef> {
 
 				const link = `${this.config.url}/verify-email/${code}`;
 
-				this.emailService.sendEmail(ps.email, 'Email verification',
-					`To verify email, please click this link:<br><a href="${link}">${link}</a>`,
-					`To verify email, please click this link: ${link}`);
+				this.emailService.sendEmail(ps.email, `[Next] @${me.username} のメールアドレスの確認をお願いします`,
+					`Nextをお選びいただきありがとうございます。<br><a href="${link}">ここ</a> をクリックすると、メールアドレスの確認が完了します。`,
+					`Nextをお選びいただきありがとうございます。\nメールアドレスの認証を完了するには、以下のリンクを開いてください。\n${link}`);
 			}
 
 			return iObj;

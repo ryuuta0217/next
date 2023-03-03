@@ -1,7 +1,7 @@
 _lang_: "日本語"
 
 headlineMisskey: "ノートでつながるネットワーク"
-introMisskey: "ようこそ！Misskeyは、オープンソースの分散型マイクロブログサービスです。\n「ノート」を作成して、いま起こっていることを共有したり、あなたについて皆に発信しよう📡\n「リアクション」機能で、皆のノートに素早く反応を追加することもできます👍\n新しい世界を探検しよう🚀"
+introMisskey: "ようこそ！Nextは、オープンソースの分散型マイクロブログサービスです。\n「ノート」を作成して、いま起こっていることを共有したり、あなたについて皆に発信しよう📡\n「リアクション」機能で、皆のノートに素早く反応を追加することもできます👍\n新しい世界を探検しよう🚀"
 poweredByMisskeyDescription: "{name}は、オープンソースのプラットフォーム<b>Misskey</b>のサーバーのひとつです。"
 monthAndDay: "{month}月 {day}日"
 search: "検索"
@@ -821,7 +821,7 @@ hashtags: "ハッシュタグ"
 troubleshooting: "トラブルシューティング"
 useBlurEffect: "UIにぼかし効果を使用"
 learnMore: "詳しく"
-misskeyUpdated: "Misskeyが更新されました！"
+misskeyUpdated: "Nextが更新されました！"
 whatIsNew: "更新情報を見る"
 translate: "翻訳"
 translatedFrom: "{x}から翻訳"
@@ -1663,7 +1663,7 @@ _time:
   day: "日"
 
 _timelineTutorial:
-  title: "Misskeyの使い方"
+  title: "Nextの使い方"
   step1_1: "この画面は「タイムライン」です。{name}に投稿された「ノート」が時系列で表示されます。"
   step1_2: "タイムラインにはいくつか種類があり、例えば「ホームタイムライン」にはあなたがフォローしている人のノートが流れ、「ローカルタイムライン」には{name}全体のノートが流れます。"
   step2_1: "試しに、何かノートを投稿してみましょう。画面上にある鉛筆マークのボタンを押すとフォームが開きます。"

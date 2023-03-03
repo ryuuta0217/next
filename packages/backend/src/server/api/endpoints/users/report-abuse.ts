@@ -105,7 +105,7 @@ export default class extends Endpoint<typeof meta, typeof paramDef> {
 
 				const meta = await this.metaService.fetch();
 				if (meta.email) {
-					this.emailService.sendEmail(meta.email, 'New abuse report',
+					this.emailService.sendEmail(meta.email, '[Next] 新しい通報が届きました',
 						sanitizeHtml(ps.comment),
 						sanitizeHtml(ps.comment));
 				}
